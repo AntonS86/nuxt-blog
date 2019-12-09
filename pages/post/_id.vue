@@ -28,9 +28,12 @@
         eligendi est, exercitationem id incidunt vitae?</p>
     </main>
     <footer>
-      <AppCommentForm/>
+      <AppCommentForm
+        v-if="canGetComment"
+        @created="createCommentHandler"
+      />
 
-      <div class="comments" v-if="false">
+      <div class="comments" v-if="true">
         <app-comment
           v-for="comment in 4"
           :key="comment"
@@ -53,6 +56,18 @@
     components: {
       AppComment,
       AppCommentForm,
+    },
+
+    data() {
+      return {
+        canGetComment: true,
+      }
+    },
+    methods: {
+      createCommentHandler() {
+        this.canGetComment = false;
+      }
+
     }
   }
 </script>
