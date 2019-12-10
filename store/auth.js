@@ -1,5 +1,5 @@
 export const state = () => ({
-  token: null,
+  token: null
 });
 
 export const mutations = {
@@ -10,8 +10,8 @@ export const mutations = {
 
 export const actions = {
   async login({ commit, dispatch }, formData) {
-    const token = await new Promise((resolve) => {
-      setTimeout(() => resolve('mock-token'), 2000)
+    const token = await new Promise(resolve => {
+      setTimeout(() => resolve('mock-token'), 2000);
     });
 
     dispatch('setToken', token);
@@ -23,5 +23,5 @@ export const actions = {
 };
 
 export const getters = {
-  isAuthenticated: (state) => Boolean(state.token),
+  isAuthenticated: state => Boolean(state.token)
 };

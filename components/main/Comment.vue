@@ -3,8 +3,8 @@
     <div class="comment-header">
       <span>Person Name</span>
       <span>
-        <i class="el-icon-time"/>
-        {{new Date().toLocaleString()}}
+        <i class="el-icon-time" />
+        {{ new Date().toLocaleString() }}
       </span>
     </div>
     <div class="comment-text">
@@ -14,25 +14,30 @@
 </template>
 
 <script>
-  export default {
-    props: ['comment'],
+export default {
+  props: {
+    comment: {
+      type: String,
+      default: 'Hello'
+    }
   }
+};
 </script>
 
 <style lang="scss" scoped>
-  .comment {
-    margin-bottom: 1rem;
-  }
+.comment {
+  margin-bottom: 1rem;
+}
 
-  .comment-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.5rem;
-    font-size: 0.8rem;
-  }
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+}
 
-  .comment-text {
-    white-space: pre-line;
-  }
+.comment-text {
+  white-space: pre-line;
+}
 </style>

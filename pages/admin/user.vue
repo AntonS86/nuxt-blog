@@ -5,11 +5,10 @@
 </template>
 
 <script>
-  export default {
-    layout: 'admin',
-  }
+export default {
+  layout: 'admin',
+  middleware: ['admin-auth']
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

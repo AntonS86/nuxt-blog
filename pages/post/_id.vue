@@ -7,101 +7,102 @@
       </div>
       <div class="post-info">
         <small>
-          <i class="el-icon-time"/>
-          {{new Date().toLocaleString()}}
+          <i class="el-icon-time" />
+          {{ new Date().toLocaleString() }}
         </small>
         <small>
-          <i class="el-icon-view"/>
+          <i class="el-icon-view" />
           42
         </small>
       </div>
       <div class="post-image">
-        <img src="https://picsum.photos/id/237/800/500" alt="pics">
+        <img src="https://picsum.photos/id/237/800/500" alt="pics" />
       </div>
     </header>
     <main class="post-content">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquid architecto cupiditate deleniti doloremque
-        eligendi est, exercitationem id incidunt vitae?</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquid architecto cupiditate deleniti doloremque
-        eligendi est, exercitationem id incidunt vitae?</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquid architecto cupiditate deleniti doloremque
-        eligendi est, exercitationem id incidunt vitae?</p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquid
+        architecto cupiditate deleniti doloremque eligendi est, exercitationem
+        id incidunt vitae?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquid
+        architecto cupiditate deleniti doloremque eligendi est, exercitationem
+        id incidunt vitae?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquid
+        architecto cupiditate deleniti doloremque eligendi est, exercitationem
+        id incidunt vitae?
+      </p>
     </main>
     <footer>
-      <AppCommentForm
-        v-if="canGetComment"
-        @created="createCommentHandler"
-      />
+      <AppCommentForm v-if="canGetComment" @created="createCommentHandler" />
 
-      <div class="comments" v-if="true">
-        <app-comment
-          v-for="comment in 4"
-          :key="comment"
-          :comment="comment"
-        />
+      <div v-if="true" class="comments">
+        <app-comment v-for="comment in 4" :key="comment" :comment="comment" />
       </div>
-      <div class="text-center" v-else>Комментариев нет</div>
+      <div v-else class="text-center">Комментариев нет</div>
     </footer>
   </article>
 </template>
 
 <script>
-  import AppComment from '@/components/main/Comment';
-  import AppCommentForm from '@/components/main/CommentForm';
+import AppComment from '@/components/main/Comment';
+import AppCommentForm from '@/components/main/CommentForm';
 
-  export default {
-    validate({params}) {
-      return Boolean(params.id);
-    },
-    components: {
-      AppComment,
-      AppCommentForm,
-    },
+export default {
+  validate({ params }) {
+    return Boolean(params.id);
+  },
+  components: {
+    AppComment,
+    AppCommentForm
+  },
 
-    data() {
-      return {
-        canGetComment: true,
-      }
-    },
-    methods: {
-      createCommentHandler() {
-        this.canGetComment = false;
-      }
-
+  data() {
+    return {
+      canGetComment: true
+    };
+  },
+  methods: {
+    createCommentHandler() {
+      this.canGetComment = false;
     }
   }
+};
 </script>
 
 <style lang="scss" scoped>
-  .post {
-    max-width: 600px;
-    margin: 0 auto;
-  }
+.post {
+  max-width: 600px;
+  margin: 0 auto;
+}
 
-  .post-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-  }
+.post-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
 
-  .post-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.5rem;
-  }
+.post-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
 
-  .post-image img {
-    width: 100%;
-    height: auto;
-  }
+.post-image img {
+  width: 100%;
+  height: auto;
+}
 
-  .post-header {
-    margin-bottom: 1.5rem;
-  }
+.post-header {
+  margin-bottom: 1.5rem;
+}
 
-  .post-content {
-    margin-bottom: 2rem;
-  }
+.post-content {
+  margin-bottom: 2rem;
+}
 </style>
