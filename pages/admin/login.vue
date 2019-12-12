@@ -74,7 +74,6 @@ export default {
             await this.$store.dispatch('auth/login', formData);
             this.$router.push('/admin');
           } catch (e) {
-            console.log(e);
             this.loading = false;
           }
         }
