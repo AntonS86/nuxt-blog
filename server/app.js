@@ -12,10 +12,11 @@ mongoose.connect(keys.MONGO_URI)
   .then(() => console.log('mongoDb connected'))
   .catch(err => console.log(err));
 
+const app = express();
+
 app.use(passport.initialize());
 passport.use(passportStrategy);
 
-const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
