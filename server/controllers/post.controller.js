@@ -60,12 +60,12 @@ module.exports.remove = async (req, res) => {
 
 
 module.exports.addView = async (req, res) => {
-  const  $set = {
-    views: ++req.body.views
+  const  $inc = {
+    views: 1
   };
 
   try {
-    await Post.findOneAndUpdate({ _id: req.params.id }, { $set });
+    await Post.findOneAndUpdate({ _id: req.params.id }, { $inc });
     res.status(204).json();
   } catch (e) {
     res.status(500).json(e);
