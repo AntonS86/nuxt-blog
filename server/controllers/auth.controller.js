@@ -24,9 +24,9 @@ module.exports.login = async (req, res) => {
 
 
 module.exports.createUser = async (req, res) => {
-  const candidate = User.findOne({ login: req.body.login });
+  const candidate = await User.findOne({ login: req.body.login });
   if (candidate) {
-    res.status(409).json({ message: 'Этот login занят' });
+    res.status(409).json({ message: 'Этот login занят', login: req.body.login});
   } else {
     const salt = bcrypt.genSaltSync(10)
     const user = new User({
