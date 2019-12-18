@@ -10,7 +10,6 @@
       :rules="rules"
       @submit.native.prevent="onSubmit"
     >
-      <!--<h2>Войти в панель администратора</h2>-->
       <el-form-item label="Тест в формате .md или .html" prop="text">
         <el-input
           v-model="controls.text"
@@ -67,10 +66,16 @@ export default {
       }
     };
   },
+
   async asyncData({ store, params }) {
     const post = await store.dispatch('post/fetchAdminById', params.id);
     return { post };
   },
+
+  mounted() {
+    this.controls.text = this.post.text;
+  },
+
   methods: {
     onSubmit() {
       this.$refs.form.validate(async valid => {
