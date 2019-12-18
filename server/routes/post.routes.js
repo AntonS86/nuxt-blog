@@ -43,7 +43,7 @@ router.get('/', ctr.getAll);
 
 router.get('/:id', ctr.getById);
 
-router.put('/:id', ctr.addView);
+router.put('/add/view/:id', ctr.addView);
 
 
 module.exports = router;

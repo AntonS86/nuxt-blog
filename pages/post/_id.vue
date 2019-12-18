@@ -2,45 +2,35 @@
   <article class="post">
     <header class="post-header">
       <div class="post-title">
-        <h1>Post title</h1>
+        <h1>{{ post.title }}</h1>
         <nuxt-link to="/"><i class="el-icon-back"/></nuxt-link>
       </div>
       <div class="post-info">
         <small>
           <i class="el-icon-time" />
-          {{ new Date().toLocaleString() }}
+          {{ new Date(post.date).toLocaleString() }}
         </small>
         <small>
           <i class="el-icon-view" />
-          42
+          {{ post.views }}
         </small>
       </div>
       <div class="post-image">
-        <img src="https://picsum.photos/id/237/800/500" alt="pics" />
+        <img :src="post.imageUrl" alt="pics" />
       </div>
     </header>
     <main class="post-content">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquid
-        architecto cupiditate deleniti doloremque eligendi est, exercitationem
-        id incidunt vitae?
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquid
-        architecto cupiditate deleniti doloremque eligendi est, exercitationem
-        id incidunt vitae?
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquid
-        architecto cupiditate deleniti doloremque eligendi est, exercitationem
-        id incidunt vitae?
-      </p>
+      <vue-markdown :key="post.text">{{ post.text }}</vue-markdown>
     </main>
     <footer>
       <AppCommentForm v-if="canGetComment" @created="createCommentHandler" />
 
-      <div v-if="true" class="comments">
-        <app-comment v-for="comment in 4" :key="comment" :comment="comment" />
+      <div v-if="post.comments.length" class="comments">
+        <app-comment
+          v-for="comment in post.comments"
+          :key="comment._id"
+          :comment="comment"
+        />
       </div>
       <div v-else class="text-center">Комментариев нет</div>
     </footer>
@@ -59,12 +49,18 @@ export default {
     AppComment,
     AppCommentForm
   },
-
   data() {
     return {
       canGetComment: true
     };
   },
+
+  async asyncData({ store, params }) {
+    const post = await store.dispatch('post/fetchById', params.id);
+    await store.dispatch('post/addView', post);
+    return { post };
+  },
+
   methods: {
     createCommentHandler() {
       this.canGetComment = false;
