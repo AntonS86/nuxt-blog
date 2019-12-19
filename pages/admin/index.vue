@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>adminka</h1>
+    <h1>Аналитика по постам</h1>
   </div>
 </template>
 

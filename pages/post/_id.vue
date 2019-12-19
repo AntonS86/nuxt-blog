@@ -23,7 +23,11 @@
       <vue-markdown :key="post.text">{{ post.text }}</vue-markdown>
     </main>
     <footer>
-      <AppCommentForm v-if="canGetComment" @created="createCommentHandler" />
+      <AppCommentForm
+        v-if="canGetComment"
+        :postid="post._id"
+        @created="createCommentHandler"
+      />
 
       <div v-if="post.comments.length" class="comments">
         <app-comment
@@ -62,7 +66,8 @@ export default {
   },
 
   methods: {
-    createCommentHandler() {
+    createCommentHandler(comment) {
+      this.post.comments.unshift(comment);
       this.canGetComment = false;
     }
   }

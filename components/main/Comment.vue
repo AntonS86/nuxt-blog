@@ -1,14 +1,14 @@
 <template>
   <el-card class="comment">
     <div class="comment-header">
-      <span>Person Name</span>
+      <span>{{ comment.name }}</span>
       <span>
         <i class="el-icon-time" />
-        {{ new Date().toLocaleString() }}
+        {{ new Date(comment.date).toLocaleString() }}
       </span>
     </div>
     <div class="comment-text">
-      Lorem ipsum dolor sit amet.
+      {{ comment.text }}
     </div>
   </el-card>
 </template>
@@ -17,8 +17,8 @@
 export default {
   props: {
     comment: {
-      type: String,
-      default: 'Hello'
+      type: Object,
+      required: true
     }
   }
 };
