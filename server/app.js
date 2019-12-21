@@ -8,7 +8,11 @@ const authRoutes = require('./routes/auth.routes');
 const postRoutes = require('./routes/post.routes');
 const commentRoutes = require('./routes/comment.routes');
 
-mongoose.connect(keys.MONGO_URI, {useCreateIndex: true, useNewUrlParser: true })
+mongoose.connect(keys.MONGO_URI, {
+  useCreateIndex: true,
+  useNewUrlParser: true,
+  useFindAndModify: false
+})
   .then(() => console.log('mongoDb connected'))
   .catch(err => console.log(err));
 

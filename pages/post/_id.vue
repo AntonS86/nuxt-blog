@@ -8,7 +8,7 @@
       <div class="post-info">
         <small>
           <i class="el-icon-time" />
-          {{ new Date(post.date).toLocaleString() }}
+          {{ post.date | date }}
         </small>
         <small>
           <i class="el-icon-view" />

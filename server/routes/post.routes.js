@@ -37,6 +37,12 @@ router.delete(
   ctr.remove
 );
 
+router.get(
+  '/admin/get/analytics',
+  passport.authenticate('jwt', { session: false }),
+  ctr.getAnalytics
+);
+
 // /api/post
 // base
 router.get('/', ctr.getAll);
