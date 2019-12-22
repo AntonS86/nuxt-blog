@@ -23,6 +23,9 @@ export default {
   components: {
     AppAnalyticsChart
   },
+  head: {
+    title: `Аналитика | ${process.env.appName}`
+  },
   async asyncData({ store }) {
     const analytics = await store.dispatch('post/getAnalytics');
     return { analytics };

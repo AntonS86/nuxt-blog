@@ -53,6 +53,11 @@ export default {
     AppComment,
     AppCommentForm
   },
+  head() {
+    return {
+      title: `${this.post.title} | ${process.env.appName}`
+    };
+  },
   data() {
     return {
       canGetComment: true
