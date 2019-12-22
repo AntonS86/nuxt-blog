@@ -55,7 +55,19 @@ export default {
   },
   head() {
     return {
-      title: `${this.post.title} | ${process.env.appName}`
+      title: `${this.post.title} | ${process.env.appName}`,
+      meta: [
+        {
+          hid: `postd-${this.post._id}`,
+          name: 'description',
+          content: this.post.title
+        },
+        {
+          hid: `postk-${this.post._id}`,
+          name: 'keywords',
+          content: 'post, js'
+        }
+      ]
     };
   },
   data() {

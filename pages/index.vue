@@ -10,7 +10,19 @@
 import AppPost from '@/components/main/Post';
 export default {
   head: {
-    title: `Главная | ${process.env.appName}`
+    title: `Главная | ${process.env.appName}`,
+    meta: [
+      {
+        hid: 'homepage',
+        name: 'description',
+        content: 'Блог на js, nuxt и express'
+      },
+      {
+        hid: 'homepage',
+        name: 'keywords',
+        content: 'блог, js, nuxt, express'
+      }
+    ]
   },
   components: {
     AppPost

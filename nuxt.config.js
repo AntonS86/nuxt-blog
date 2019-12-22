@@ -11,7 +11,12 @@ module.exports = {
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || ''
+        content: 'Блог написанный на nuxt и express'
+      },
+      {
+        hid: 'keywords',
+        name: 'keywords',
+        content: 'blog, js, nuxt, express'
       }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
